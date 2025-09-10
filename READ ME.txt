@@ -1,0 +1,108 @@
+A* Pathfinding – Ant Search
+================================================
+
+Overview:
+---------
+This game is a Swing-based simulation that visualizes the A* pathfinding algorithm. 
+Players configure a 16×16 terrain grid where an ant travels from its home (start cell) to a food source (goal cell) while avoiding obstacles and minimizing movement cost across different terrains.
+
+Gameplay Instructions:
+----------------------
+- Left-click any cell on the grid to assign a type:
+    - Start: Blue (ant's home)
+    - Goal: Red (target food source)
+    - Open: Light gray (cost = 1)
+    - Grassland: Green (cost = 3)
+    - Swampland: Brown (cost = 4)
+    - Obstacle: Dark gray (impassable)
+
+- Click Run A* to begin the pathfinding animation.
+- Click Reset to clear terrain types (Start and Goal remain).
+- Click Randomize to fill the grid with a randomized, solvable mix of terrains (Start and Goal remain).
+
+Game Features:
+--------------
+- Fully interactive 16×16 terrain grid with editable tiles.
+- Supports A* pathfinding considering movement costs and obstacles.
+- Animated path tracing step-by-step.
+- Multiple terrain types, each with a different movement penalty:
+     - Open: 1
+     - Grassland: 3
+     - Swampland: 4
+     - Obstacles: impassable
+
+- Reset and Randomize functionality for quick experimentation.
+
+
+Source Files Included:
+----------------------
+Game1GUI.java         : The main GUI class with rendering, event handling, and animation (Where to launch the game).
+Cell.java             : Represents each cell in the grid (coordinates, terrain type, cost).
+TerrainType.java      : Enum that defines all possible terrain types and labels.
+AStar.java            : Contains the pathfinding logic (open/closed list, cost evaluation).
+
+
+No sound or texture files.
+
+Compilation & Execution:
+------------------------
+Ran using Visual Studio Code using the Coding Pack for Java - Windows: https://code.visualstudio.com/docs/java/java-tutorial
+
+Bugs:
+-------------
+- Randomization may generate unsolvable maps if start/goal are boxed in. Consider manually adjusting terrain in those cases.
+
+
+FSM – Ant Simulation
+================================================
+
+Overview:
+---------
+This game simulates the behavior of an ant colony in a grid-based environment. The ants move around in search of food, return it to their home, get thirsty, search for water, and repeat the cycle. Every time food is brought back, a new ant is born, and the colony grows. Ants must avoid poison tiles, which are deadly. The simulation continues until all ants have died.
+
+Gameplay Instructions:
+----------------------
+- User input at start for starting number of ants in the colony.
+- Watch the colony prosper and/or die out.
+
+Game Features:
+--------------
+- Environment is generated randomly at runtime.
+- Cell types:
+	- Empty – Safe for ants to walk on. (White)
+	- Food – When found, ants carry it back to their home. (Green)
+	- Water – Used to rehydrate thirsty ants. (Cyan)
+	- Poison – Kills any ant that steps on it. (Red)
+	- The home cell is a large blue square with a white "H".
+
+- Ant behavior:
+	- Searching for food - moves randomly. (Orange)
+	- Finding food - carries it back home using a greedy movement. (Deep Blue)
+	- Arriving home - drops food, becomes thirsty, and spawns a new ant.
+	- Searching for water - moves randomly until water is found. (Magenta)
+	- Finding water - drinks, resumes searching for food.
+	- Stepping on poison - dies instantly. (Black)
+
+- The simulation ends when all ants are dead.
+
+
+Source Files Included:
+----------------------
+AntCell.java          : Represents a single tile on the world grid used by the FSM
+Ant.java              : Handles a the finite state machine of ants.
+AntState.java         : Ant finite states.
+CellType.java         : Tile types for the world: empty ground, food, water, poison.
+GamePanel.java        : Swing panel that renders the grid, home, and ants.
+Main.java             : Entry point for the FSM Ant Simulation (Where to launch the game).
+World.java            : Holds the grid and all ants; creates the map and advances the simulation.
+
+
+No sound or texture files.
+
+Compilation & Execution:
+------------------------
+Ran using Visual Studio Code using the Coding Pack for Java - Windows: https://code.visualstudio.com/docs/java/java-tutorial
+
+Bugs:
+-------------
+- None that I am aware of that I haven't fixed.
